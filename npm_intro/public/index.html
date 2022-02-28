@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ubicación</title>
+</head>
+<body>
+  <h3>Esta APP muestra tu ubicación</h3>
+  <button id="buscar">Buscar</button>
+  <h4 id="ubicacion"></h4>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script>
+    function ubicar() {
+      return new Promise((myResolve, myReject) => {
+        navigator.geolocation.getCurrentPosition(
+          pos => myResolve(pos)
+        )
+      })
+    }
+
+    $('#buscar').on('click', async function () {
+      /*
+      ubicar()
+      .then(function (pos) {
+        console.log(pos)
+      })
+      */
+     const pos = await ubicar()
+     
+     $('#ubicacion').html(`Se encuentra en las coordenadas ${pos.coords.latitude} y ${pos.coords.longitude}`)
+    })
+
+    
+  </script>
+</body>
+</html>
