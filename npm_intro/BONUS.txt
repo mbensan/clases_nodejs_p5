@@ -1,0 +1,6 @@
+BONUS:
+
+- Escribir la fecha, hora (Moment.js) y ubicación geográfica en la foto procesada en consola (chalk.js).
+- Imprimir en la foto una frase de GOT (https://anapioficeandfire.com/api/houses/:id)
+ (entre el 1 y el 80 hay casas. Elegir una al azar)
+
