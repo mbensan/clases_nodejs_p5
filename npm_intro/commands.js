@@ -1,5 +1,9 @@
-//import yargs from 'yargs'
-const yargs = require('yargs')
+const yargs = require('yargs') // versión antigua
+const chalk = require('chalk') // versión antigua
+//import Yargs from 'yargs' // require pero más moderno
+//import chalk from 'chalk'
+
+
 
 yargs.command(
   // nombre del comando
@@ -20,6 +24,7 @@ yargs.command(
   }
 ).help().argv
 
+
 yargs.command(
   // nombre del comando
   'ping',
@@ -35,13 +40,17 @@ yargs.command(
   },
   // la acción del comando
   function (args) {
-    const veces = parseInt(args.veces)
+    if (isNaN(args.veces)) {
+      console.log(chalk.red('ERROR: Veces debe ser un número'))
+      return
+    }
+    const veces = Number(args.veces)
     if (veces < 0) {
-      console.log('Error. Veces negativas')
+      console.log(chalk.red(chalk.bold('Error: ') +  'Veces negativas'))
       return
     }
     for (let i=0; i<veces; i++) {
-      console.log('PONG')
+      console.log(chalk.bgYellow(chalk.cyan('PONG')))
     }
   }
 ).help().argv
