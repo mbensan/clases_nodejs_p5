@@ -1,6 +1,6 @@
 const nodemailer = require('nodemailer')
 
-const transp = nodemailer.createTransport({
+const transport = nodemailer.createTransport({
   service: 'gmail',
   auth: {
     user: 'mbensan.test@gmail.com',
@@ -8,18 +8,18 @@ const transp = nodemailer.createTransport({
   }
 })
 
-function send (receivers, subjet, html) {
+function send (receivers, subject, html) {
   const options = {
     from: 'mbensan.test@gmail.com',
     //to: ['inzunzapaula1@gmail.com','javiera@plataforma5.la'],
     to: receivers,
     //subject: 'Eres la ganadora del sorteo millonario!!!',
-    subjet,
+    subject,
     html
     //html: `<a href="sitiopeligroso.php">Click aquí</a>`
   }
 
-  transp.sendMail(options, () => {
+  transport.sendMail(options, () => {
     console.log('Email enviado');
   })
 }

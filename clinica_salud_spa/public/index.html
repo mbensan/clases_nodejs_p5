@@ -1,0 +1,18 @@
+<table>
+
+</table>
+
+<script>
+  async function cargar_tabla() {
+    const {data} = await axios.get('alguna url')
+    data.clientes.map(cliente => {
+      // acá metemos el cliente a la tabla
+      $(tbody).append(`
+        <tr>
+          <td>${usuario.nombre} ${usuario.apellido}</td>
+          ....
+        </tr>
+      `)
+    }) 
+  }
+</script>
